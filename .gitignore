@@ -1,0 +1,6 @@
+# do NOT track Python compilation files
+*.py[cod]
+
+# editor files
+.idea
+stm.iml
