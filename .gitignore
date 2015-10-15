@@ -3,8 +3,10 @@
 # settings local
 stm/settings/local.py
 
-tmp/*
+tmp/*.*
 !tmp/README
+tmp/static/*.*
+!tmp/static/README
 
 media/*
 !media/README

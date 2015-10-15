@@ -13,7 +13,7 @@ DEBUG = True
 DATABASES = {
     'default': {
         'ENGINE': 'django.db.backends.sqlite3',
-        'NAME': join(PROJECT_ROOT, 'run', 'develop.sqlite3'),
+        'NAME': join(PROJECT_ROOT, 'tmp', 'develop.sqlite3'),
     }
 }
 

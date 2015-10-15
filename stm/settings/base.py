@@ -2,6 +2,7 @@
 import sys
 # Import some utility functions
 from os.path import abspath, basename, dirname, join, normpath
+from django.contrib import messages
 
 # #########################################################
 
@@ -9,7 +10,6 @@ from os.path import abspath, basename, dirname, join, normpath
 
 # Fetch Django's project directory
 DJANGO_ROOT = dirname(dirname(abspath(__file__)))
-print(DJANGO_ROOT)
 
 # Fetch the project_root
 PROJECT_ROOT = dirname(DJANGO_ROOT)
@@ -24,14 +24,15 @@ STATIC_ROOT = join(PROJECT_ROOT, 'static')
 MEDIA_ROOT = join(PROJECT_ROOT, 'media')
 
 # look for static assets here
-STATICFILES_DIRS = [
-    join(PROJECT_ROOT, 'static'),
-]
+# STATICFILES_DIRS = [
+#     join(PROJECT_ROOT, 'tmp', 'static'),
+# ]
 
 # look for templates here
 # This is an internal setting, used in the TEMPLATES directive
 PROJECT_TEMPLATES = [
     join(PROJECT_ROOT, 'templates'),
+
 ]
 
 # Add apps/ to the Python path
@@ -41,12 +42,26 @@ sys.path.append(normpath(join(PROJECT_ROOT, 'apps')))
 # ##### APPLICATION CONFIGURATION #########################
 
 INSTALLED_APPS = (
+    # django admin bootstraped
+    'django_admin_bootstrapped',
+
+    # django
     'django.contrib.admin',
     'django.contrib.auth',
     'django.contrib.contenttypes',
     'django.contrib.sessions',
     'django.contrib.messages',
     'django.contrib.staticfiles',
+
+    # django extension
+    'django_extensions',
+
+    # django-bootstrap3
+    'bootstrap3',
+
+    # apps
+    'apps.base.colorfield',
+    'apps.memo',
 )
 
 # Middlewares
@@ -132,6 +147,18 @@ USE_L10N = True
 USE_TZ = True
 
 
-# ##### SECRET ############################################
+# ##### DJANGO BOOTSTRAP 3 ################################
 
+DAB_FIELD_RENDERER = 'django_admin_bootstrapped.renderers.BootstrapFieldRenderer'
 
+BOOTSTRAP3 = {
+    'jquery_url': '//ajax.googleapis.com/ajax/libs/jquery/2.1.4/jquery.min.js',
+    'base_url': '//maxcdn.bootstrapcdn.com/bootstrap/3.3.5/',
+    'javascript_in_head': True,
+}
+
+MESSAGE_TAGS = {
+    messages.SUCCESS: 'alert-success success',
+    messages.WARNING: 'alert-warning warning',
+    messages.ERROR: 'alert-danger error'
+}
