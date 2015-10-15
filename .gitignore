@@ -26,6 +26,8 @@ pip-delete-this-directory.txt
 # Sphinx documentation
 docs/_build/
 
+.python-version
+
 
 ### https://raw.github.com/github/gitignore/ad500c8a491fc51b00b10e1d57c1d10e1f677eb8/Global/Windows.gitignore
 

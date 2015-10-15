@@ -9,6 +9,7 @@ from os.path import abspath, basename, dirname, join, normpath
 
 # Fetch Django's project directory
 DJANGO_ROOT = dirname(dirname(abspath(__file__)))
+print(DJANGO_ROOT)
 
 # Fetch the project_root
 PROJECT_ROOT = dirname(DJANGO_ROOT)
@@ -88,9 +89,7 @@ TEMPLATES = [
 SECRET_KEY = 'j9+4_o9mvef8_kv&ono&0&f-v&)9qk_49@$o275198mo$q4him'
 
 # These persons receive error notification
-ADMINS = (
-    ('your name', 'your_name@example.com'),
-)
+ADMINS = ()
 MANAGERS = ADMINS
 
 
