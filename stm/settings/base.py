@@ -18,21 +18,21 @@ PROJECT_ROOT = dirname(DJANGO_ROOT)
 SITE_NAME = basename(DJANGO_ROOT)
 
 # Collect static files here
-STATIC_ROOT = join(PROJECT_ROOT, 'static')
+STATIC_ROOT = join(PROJECT_ROOT, 'deploy', 'static')
 
 # Collect media files here
-MEDIA_ROOT = join(PROJECT_ROOT, 'media')
+MEDIA_ROOT = join(PROJECT_ROOT, 'deploy', 'media')
 
-# look for static assets here
-# STATICFILES_DIRS = [
-#     join(PROJECT_ROOT, 'tmp', 'static'),
-# ]
+#  look for static assets here
+STATICFILES_DIRS = [
+    join(PROJECT_ROOT, 'static'),
+]
 
 # look for templates here
 # This is an internal setting, used in the TEMPLATES directive
 PROJECT_TEMPLATES = [
     join(PROJECT_ROOT, 'templates'),
-
+    join(PROJECT_ROOT, 'templates', 'apps'),
 ]
 
 # Add apps/ to the Python path
@@ -44,6 +44,8 @@ sys.path.append(normpath(join(PROJECT_ROOT, 'apps')))
 INSTALLED_APPS = (
     # django admin bootstraped
     'django_admin_bootstrapped',
+
+    'apps.ex_staticfiles',
 
     # django
     'django.contrib.admin',
@@ -59,8 +61,12 @@ INSTALLED_APPS = (
     # django-bootstrap3
     'bootstrap3',
 
+    # django-pipeline
+    'pipeline',
+
     # apps
     'apps.base.colorfield',
+    'apps.base.navigation',
     'apps.memo',
 )
 
@@ -91,7 +97,7 @@ TEMPLATES = [
                 'django.template.context_processors.static',
                 'django.template.context_processors.tz',
                 'django.contrib.auth.context_processors.auth',
-                'django.contrib.messages.context_processors.messages'
+                'django.contrib.messages.context_processors.messages',
             ],
         },
     },
@@ -152,9 +158,10 @@ USE_TZ = True
 DAB_FIELD_RENDERER = 'django_admin_bootstrapped.renderers.BootstrapFieldRenderer'
 
 BOOTSTRAP3 = {
-    'jquery_url': '//ajax.googleapis.com/ajax/libs/jquery/2.1.4/jquery.min.js',
-    'base_url': '//maxcdn.bootstrapcdn.com/bootstrap/3.3.5/',
+    'jquery_url': 'https://ajax.googleapis.com/ajax/libs/jquery/2.1.4/jquery.min.js',
+    'base_url': 'https://maxcdn.bootstrapcdn.com/bootstrap/3.3.5/',
     'javascript_in_head': True,
+    'theme_url': 'https://maxcdn.bootstrapcdn.com/bootswatch/3.3.5/flatly/bootstrap.min.css',
 }
 
 MESSAGE_TAGS = {
@@ -162,3 +169,57 @@ MESSAGE_TAGS = {
     messages.WARNING: 'alert-warning warning',
     messages.ERROR: 'alert-danger error'
 }
+
+
+# ##### DJANGO STATIC FILES ##############################
+
+STATICFILES_STORAGE = 'pipeline.storage.PipelineStorage'
+
+STATICFILES_FINDERS = (
+    'django.contrib.staticfiles.finders.FileSystemFinder',
+    'django.contrib.staticfiles.finders.AppDirectoriesFinder',
+    'pipeline.finders.PipelineFinder',
+)
+
+STATICFILES_IGNORES = (
+    'debug_toolbar',
+    'django_extensions',
+    'bootstrap',
+    'bootstrap-rtl',
+)
+
+# ##### DJANGO PIPELINE ##################################
+
+PIPELINE_CSS = {
+    'core': {
+        'source_filenames': (
+            'css/core.css',
+        ),
+        'output_filename': 'css/core.min.css',
+    },
+    'starter': {
+        'source_filenames': (
+            'css/starter-template.css',
+        ),
+        'output_filename': 'css/starter.min.css',
+    },
+}
+
+PIPELINE_JS = {
+    'core': {
+        'source_filenames': (
+            'js/core.js',
+        ),
+        'output_filename': 'js/core.min.js',
+    }
+}
+
+PIPELINE_CSS_COMPRESSOR = None
+PIPELINE_JS_COMPRESSOR = None
+
+PIPELINE_COMPILERS = (
+    'pipeline.compilers.coffee.CoffeeScriptCompiler',
+    'pipeline.compilers.stylus.StylusCompiler',
+)
+PIPELINE_COFFEE_SCRIPT_BINARY = '/usr/local/bin/coffee'
+PIPELINE_STYLUS_BINARY = '/usr/local/bin/stylus'

@@ -6,7 +6,6 @@ from django import forms
 from django.db import models
 from django.conf import settings
 from django.core.validators import RegexValidator
-from django.template.loader import render_to_string
 from django.utils.translation import ugettext_lazy as _
 from django.utils.safestring import mark_safe
 
@@ -16,17 +15,30 @@ validate_color = RegexValidator(color_re, _('Enter a valid color.'), 'invalid')
 
 class ColorWidget(forms.TextInput):
     class Media:
-        js = [settings.STATIC_URL + 'colorfield/jscolor/jscolor.js']
+        js = ('https://cdnjs.cloudflare.com/ajax/libs/bootstrap-colorpicker/2.3.0/js/bootstrap-colorpicker.min.js',)
+        css = {
+            'all': ('https://cdnjs.cloudflare.com/ajax/libs/bootstrap-colorpicker/2.3.0/css/bootstrap-colorpicker.min.css',)
+        }
         
     def render(self, name, value, attrs=None):
         script = """
-<input type="text" name="%s" value="%s" id="%s"
-class="colorfield_field"/>
-<script>!function() { jscolor.init(); }()</script>
-""" % (name, value, attrs['id'],)
+<script>
+    $(function(){
+        $('.%s').colorpicker();
+    });
+</script>
+""" % ('id_group_{}'.format(name))
 
         super_render = super(ColorWidget, self).render(name, value, attrs)
-        return mark_safe("%s" % (script))
+
+        return_html = """
+<div class="input-group %s">
+%s
+<span class="input-group-addon"><i></i></span>
+</div>
+%s
+""" % ('id_group_{}'.format(name), super_render, script)
+        return mark_safe(return_html)
 
 
 class ColorField(models.CharField):

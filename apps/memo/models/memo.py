@@ -13,4 +13,4 @@ class Memo(models.BaseMasterModel):
         verbose_name = 'メモ'
         verbose_name_plural = verbose_name
         select_on_save = True
-        get_latest_by = 'updated'
+        get_latest_by = 'modified'

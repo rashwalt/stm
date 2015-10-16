@@ -1,0 +1,7 @@
+{% for navi in navigation %}
+    {% if navi.page_id == page_id %}
+        <li class="active"><a href="#">{{ navi.page_name }}</a></li>
+    {% else %}
+        <li><a href="{{ navi.url }}">{{ navi.page_name }}</a></li>
+    {% endif %}
+{% endfor %}
