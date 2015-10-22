@@ -3,9 +3,8 @@ from django.core.urlresolvers import reverse
 
 
 class Navigation(Enum):
-    home = (1, 'Home', 'memo_index')
-    about = (2, 'About', 'memo_index')
-    contact = (3, 'Contact', 'memo_index')
+    home = (1, 'ホーム', 'memo_index')
+    label = (2, 'タグ管理', 'memo_label_list')
 
     @property
     def page_id(self):

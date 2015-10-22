@@ -3,7 +3,39 @@
 
 {% block container %}
     <div class="starter-template">
-        <h1>Bootstrap starter template</h1>
-        <p class="lead">Use this document as a way to quickly start any new project.<br> All you get is this text and a mostly barebones HTML document.</p>
+        {% for memo in memo_list %}
+            {% if forloop.counter0|divisibleby:"4" %}
+            <div class="row">
+            {% endif %}
+            <div class="memo col-md-3 col-sm-6">
+                <button type="button" class="btn btn-default btn-lg" data-toggle="modal" data-target="#modal{{ memo.id }}">{{ memo.title }}</button>
+
+                <div class="modal fade" id="modal{{ memo.id }}">
+                    <div class="modal-dialog">
+                        <div class="modal-content">
+                            <div class="modal-header">
+                                <button type="button" class="close" data-dismiss="modal" aria-label="Close"><span aria-hidden="true">&times;</span></button>
+                                <h4 class="modal-title">
+                                    {{ memo.title }}
+                                </h4>
+
+                                {% for label in memo.labels %}
+                                    <span class="label label-primary" {% if label.color %}style="background-color: {{ label.color }};color: {{ label.text_color }};"{% endif %}>{{ label.name }}</span>
+                                {% endfor %}
+                            </div>
+                            <div class="modal-body">
+                                {{ memo.text }}
+                            </div>
+                            <div class="modal-footer">
+                                <button type="button" class="btn btn-primary" data-dismiss="modal">閉じる</button>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+            {% if forloop.counter|divisibleby:"4" %}
+            </div>
+            {% endif %}
+        {% endfor %}
     </div>
 {% endblock %}
