@@ -53,8 +53,8 @@ class LabelDeleteView(GenericDeleteView):
         return super(LabelDeleteView, self).dispatch(request, *args, **kwargs)
 
     def delete(self, request, *args, **kwargs):
-        self.object = self.get_object()
-        self.object.delete()
+        label = self.get_object()
+        label.delete()
         return HttpResponse(render_to_string(self.template_success_name))
 
 
@@ -69,4 +69,3 @@ class LabelCreateView(GenericCreateView):
     def form_valid(self, form):
         form.save()
         return HttpResponse(render_to_string(self.template_success_name))
-
