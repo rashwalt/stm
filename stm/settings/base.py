@@ -65,6 +65,7 @@ INSTALLED_APPS = (
     'pipeline',
 
     # apps
+    'apps.base',
     'apps.base.colorfield',
     'apps.base.navigation',
     'apps.memo',

@@ -1,3 +1,5 @@
+@import "mixins/clear-button.styl"
+
 .memo
   padding-bottom 5px
 
@@ -7,20 +9,12 @@
 .label
   padding-bottom 5px
 
-  >button
-    clear-button()
-
 .modal-body
   text-align left
-
-clear-button()
-  text-overflow ellipsis
-  width 100%
-  white-space nowrap
-  overflow hidden
-  background-color #ffffff
-  color #333
 
 .starter-template
   >table
     text-align left
+
+.create-button
+  text-align right

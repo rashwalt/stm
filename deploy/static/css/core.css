@@ -1,6 +1,14 @@
 .memo {
   padding-bottom: 5px;
 }
+.memo >button {
+  text-overflow: ellipsis;
+  width: 100%;
+  white-space: nowrap;
+  overflow: hidden;
+  background-color: #fff;
+  color: #333;
+}
 .label {
   padding-bottom: 5px;
 }
@@ -9,4 +17,7 @@
 }
 .starter-template >table {
   text-align: left;
+}
+.create-button {
+  text-align: right;
 }

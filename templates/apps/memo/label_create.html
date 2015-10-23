@@ -1,0 +1,42 @@
+{% load general %}
+<form id="modal-form" action="{% url 'memo_label_create' %}" method="POST" role="dialog" class="form-horizontal">
+<div class="modal-header">
+    <button type="button" class="close" data-dismiss="modal" aria-label="Close"><span aria-hidden="true">&times;</span></button>
+    <h4 class="modal-title" id="modal-label">
+        タグ追加
+    </h4>
+</div>
+<div class="modal-body">
+    {% csrf_token %}
+    {{ form.non_field_errors }}
+    {% for field in form %}
+        <div class="form-group">
+        {% if field.errors %}
+            <ul class="form-errors">
+            {% for error in field.errors %}
+                <li><i class="fa fa-exclamation-triangle"> <strong>{{ error|escape }}</strong></i></li>
+            {% endfor %}
+            </ul>
+        {% endif %}
+        <label class="col-sm-2 control-label" for="{{ field.id_for_label }}">{{ field.label }}</label>
+        <div class="col-sm-10">
+            {{ field|css:"form-control" }}
+        </div>
+        {% if field.help_text %}
+            <div class="form-helptext">{{ field.help_text }}</div>
+        {% endif %}
+        </div>
+    {% endfor %}
+</div>
+<div class="modal-footer">
+    <button type="button" class="btn btn-default" data-dismiss="modal">閉じる</button>
+    <input type="submit" class="btn btn-info" value="追加" />
+</div>
+</form>
+<script>
+    var form_options = {
+        target: '#modal-content',
+        success: function(){}
+    };
+    $('#modal-form').ajaxForm(form_options);
+</script>

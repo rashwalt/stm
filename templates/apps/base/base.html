@@ -8,14 +8,15 @@
 
     <title>{% block title %}{% if page_title %}{{ page_title }} | Simple Tag Memo{% else %}Simple Tag Memo{% endif %}{% endblock %}</title>
 
-    {% block extrastyle %}{% endblock %}
-
     <!-- Bootstrap -->
     {% bootstrap_css %}
     {% bootstrap_messages %}
+    <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/font-awesome/4.4.0/css/font-awesome.min.css">
 
     {% stylesheet 'starter' %}
     {% stylesheet 'core' %}
+
+    {% block extra_css %}{% endblock %}
 
     <!--[if lt IE 9]>
       <script src="https://oss.maxcdn.com/html5shiv/3.7.2/html5shiv.min.js"></script>
@@ -51,5 +52,6 @@
     <!-- Bootstrap JS -->
     <script src="{% bootstrap_jquery_url %}"></script>
     {% bootstrap_javascript %}
+    {% block extra_js %}{% endblock %}
 </body>
 </html>

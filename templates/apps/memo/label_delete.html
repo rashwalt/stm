@@ -1,0 +1,25 @@
+{% load general %}
+<form id="modal-form" action="{% url 'memo_label_delete' label.id %}" method="POST" role="dialog" class="form-horizontal">
+<div class="modal-header">
+    <button type="button" class="close" data-dismiss="modal" aria-label="Close"><span aria-hidden="true">&times;</span></button>
+    <h4 class="modal-title" id="modal-label">
+        タグ削除
+    </h4>
+</div>
+<div class="modal-body">
+    {% csrf_token %}
+    <p>以下のタグを削除しますか？</p>
+    <p><span class="label label-primary" {% if label.color %}style="background-color: {{ label.color }};color: {{ label.text_color }};"{% endif %}>{{ label.name }}</span></p>
+</div>
+<div class="modal-footer">
+    <button type="button" class="btn btn-default" data-dismiss="modal">閉じる</button>
+    <input type="submit" class="btn btn-danger" value="削除" />
+</div>
+</form>
+<script>
+    var form_options = {
+        target: '#modal-content',
+        success: function(){}
+    };
+    $('#modal-form').ajaxForm(form_options);
+</script>
