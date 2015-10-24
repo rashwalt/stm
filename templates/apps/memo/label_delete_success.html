@@ -1,0 +1,22 @@
+<div class="modal-header">
+    <button type="button" class="close" data-dismiss="modal" aria-label="Close"><span aria-hidden="true">&times;</span></button>
+    <h4 class="modal-title" id="modal-label">
+        タグ削除中
+    </h4>
+</div>
+<div class="modal-body" style="text-align: center;">
+    <i class="fa fa-spinner fa-pulse"></i>
+    Now Loading...
+    <script>
+        setTimeout(function(){
+            jQuery('#modal').modal('hide');
+            window.location.href = '{% url 'memo_label_list' %}'
+        }, 1000);
+        $('body').on('hidden.bs.modal', '.modal', function(){
+            $(this).removeData('bs.modal');
+        });
+    </script>
+</div>
+<div class="modal-footer">
+
+</div>

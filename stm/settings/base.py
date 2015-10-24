@@ -65,6 +65,7 @@ INSTALLED_APPS = (
     'pipeline',
 
     # apps
+    'apps.base',
     'apps.base.colorfield',
     'apps.base.navigation',
     'apps.memo',
@@ -193,13 +194,13 @@ STATICFILES_IGNORES = (
 PIPELINE_CSS = {
     'core': {
         'source_filenames': (
-            'css/core.css',
+            'css/core.styl',
         ),
         'output_filename': 'css/core.min.css',
     },
     'starter': {
         'source_filenames': (
-            'css/starter-template.css',
+            'css/starter-template.styl',
         ),
         'output_filename': 'css/starter.min.css',
     },
@@ -221,5 +222,5 @@ PIPELINE_COMPILERS = (
     'pipeline.compilers.coffee.CoffeeScriptCompiler',
     'pipeline.compilers.stylus.StylusCompiler',
 )
-PIPELINE_COFFEE_SCRIPT_BINARY = '/usr/local/bin/coffee'
-PIPELINE_STYLUS_BINARY = '/usr/local/bin/stylus'
+PIPELINE_COFFEE_SCRIPT_BINARY = '/usr/local/bin/node /usr/local/bin/coffee'
+PIPELINE_STYLUS_BINARY = '/usr/local/bin/node /usr/local/bin/stylus'

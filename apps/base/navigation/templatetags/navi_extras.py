@@ -1,5 +1,6 @@
 from django import template
-from ..enums import Navigation
+
+from apps.base.navigation.enums import Navigation
 
 register = template.Library()
 

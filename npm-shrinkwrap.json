@@ -1,0 +1,84 @@
+{
+  "dependencies": {
+    "amdefine": {
+      "version": "1.0.0",
+      "from": "amdefine@>=0.0.4",
+      "resolved": "https://registry.npmjs.org/amdefine/-/amdefine-1.0.0.tgz"
+    },
+    "coffee-script": {
+      "version": "1.10.0",
+      "from": "coffee-script@*",
+      "resolved": "https://registry.npmjs.org/coffee-script/-/coffee-script-1.10.0.tgz"
+    },
+    "css-parse": {
+      "version": "1.7.0",
+      "from": "css-parse@>=1.7.0 <1.8.0",
+      "resolved": "https://registry.npmjs.org/css-parse/-/css-parse-1.7.0.tgz"
+    },
+    "debug": {
+      "version": "2.2.0",
+      "from": "debug@*",
+      "resolved": "https://registry.npmjs.org/debug/-/debug-2.2.0.tgz"
+    },
+    "font-awesome-stylus": {
+      "version": "4.4.0",
+      "from": "font-awesome-stylus@*",
+      "resolved": "https://registry.npmjs.org/font-awesome-stylus/-/font-awesome-stylus-4.4.0.tgz"
+    },
+    "glob": {
+      "version": "3.2.11",
+      "from": "glob@>=3.2.0 <3.3.0",
+      "resolved": "https://registry.npmjs.org/glob/-/glob-3.2.11.tgz"
+    },
+    "inherits": {
+      "version": "2.0.1",
+      "from": "inherits@>=2.0.0 <3.0.0",
+      "resolved": "https://registry.npmjs.org/inherits/-/inherits-2.0.1.tgz"
+    },
+    "lru-cache": {
+      "version": "2.7.0",
+      "from": "lru-cache@>=2.0.0 <3.0.0",
+      "resolved": "https://registry.npmjs.org/lru-cache/-/lru-cache-2.7.0.tgz"
+    },
+    "minimatch": {
+      "version": "0.3.0",
+      "from": "minimatch@>=0.3.0 <0.4.0",
+      "resolved": "https://registry.npmjs.org/minimatch/-/minimatch-0.3.0.tgz"
+    },
+    "minimist": {
+      "version": "0.0.8",
+      "from": "minimist@0.0.8",
+      "resolved": "https://registry.npmjs.org/minimist/-/minimist-0.0.8.tgz"
+    },
+    "mkdirp": {
+      "version": "0.5.1",
+      "from": "mkdirp@>=0.5.0 <0.6.0",
+      "resolved": "https://registry.npmjs.org/mkdirp/-/mkdirp-0.5.1.tgz"
+    },
+    "ms": {
+      "version": "0.7.1",
+      "from": "ms@0.7.1",
+      "resolved": "https://registry.npmjs.org/ms/-/ms-0.7.1.tgz"
+    },
+    "sax": {
+      "version": "0.5.8",
+      "from": "sax@>=0.5.0 <0.6.0",
+      "resolved": "https://registry.npmjs.org/sax/-/sax-0.5.8.tgz"
+    },
+    "sigmund": {
+      "version": "1.0.1",
+      "from": "sigmund@>=1.0.0 <1.1.0",
+      "resolved": "https://registry.npmjs.org/sigmund/-/sigmund-1.0.1.tgz"
+    },
+    "source-map": {
+      "version": "0.1.43",
+      "from": "source-map@>=0.1.0 <0.2.0",
+      "resolved": "https://registry.npmjs.org/source-map/-/source-map-0.1.43.tgz"
+    },
+    "stylus": {
+      "version": "0.52.4",
+      "from": "stylus@*",
+      "resolved": "https://registry.npmjs.org/stylus/-/stylus-0.52.4.tgz"
+    }
+  }
+}

@@ -1,9 +1,26 @@
-from django.views.generic import TemplateView
+from django.views.generic.base import TemplateResponseMixin
+from django.views.generic import TemplateView, UpdateView, DeleteView, CreateView
 
 
-class BaseTemplateView(TemplateView):
+class GenericTemplateResponseMixin(TemplateResponseMixin):
     page_id = None
 
-    def get_context_data(self, **kwargs):
-        kwargs['page_id'] = self.page_id
-        return super(BaseTemplateView, self).get_context_data(**kwargs)
+    def render_to_response(self, context, **response_kwargs):
+        context['page_id'] = self.page_id
+        return super(GenericTemplateResponseMixin, self).render_to_response(context, **response_kwargs)
+
+
+class GenericTemplateView(TemplateView, GenericTemplateResponseMixin):
+    pass
+
+
+class GenericUpdateView(UpdateView, GenericTemplateResponseMixin):
+    pass
+
+
+class GenericDeleteView(DeleteView, GenericTemplateResponseMixin):
+    pass
+
+
+class GenericCreateView(CreateView, GenericTemplateResponseMixin):
+    pass
